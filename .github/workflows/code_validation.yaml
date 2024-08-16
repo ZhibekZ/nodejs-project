@@ -11,21 +11,13 @@ jobs:
     steps:
     # Checkout the repository to the GitHub Actions runner
     - name: Checkout
+      uses: actions/checkout@v4
+    - name: Checkout
       uses: actions/setup-node@v2
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Install NodeJS
       run: npm install
-  validation:
-    needs: install
-    name: 'Validation'
-    runs-on: ubuntu-latest
-    steps:
-    # Checkout the repository to the GitHub Actions runner
-    - name: Checkout
-      uses: actions/setup-node@v2
-    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: lint
       run: npm run lint
     - name: test
       run: npm run tests
-        
